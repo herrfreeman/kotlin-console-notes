@@ -1,3 +1,4 @@
+//Список архивов
 class ListOfArchivesScreen() : ContentItem, ConsoleScreen<Archive>() {
 
     init {
@@ -7,7 +8,6 @@ class ListOfArchivesScreen() : ContentItem, ConsoleScreen<Archive>() {
 
     override fun open() {
         println("Архивы:")
-        showItemList()
         run() //вызывает item.open()
     }
 

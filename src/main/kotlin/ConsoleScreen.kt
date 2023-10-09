@@ -1,32 +1,26 @@
 import java.util.Scanner
 
+fun interface ContentItem {
+    fun open()
+}
+
+//Реализует хранение, вывод меню, выбор пункта меню, ввод непустого названия
 abstract class ConsoleScreen<T: ContentItem> () {
 
     val contentList: MutableList<Pair<String,T>> = mutableListOf()
+    /*
+    Для хранения использовал пары - Наименование пункта, пункт меню
+    Пары выглядят не особо красиво, но:
+    нужен и текст и дейтсвие, если сделать класс, то не получится в качестве действия назначить лямбды
+    если сделать только интерфейс, то негде сохранить название
+    */
 
-    /*init {
-
-        contentList.add(object : ContentItem("Add") {
-            override fun open() { addContentItem() }
-        } as T)
-
-        contentList.add(object : ContentItem("Exit") {
-            override fun open() { }
-        } as T)
-    }*/
-
-//    fun show() {
-//        var itemIndex = 0
-//        for (item in contentList) println("${itemIndex++}. ${item}")
-//    }
+    abstract fun addContentItem()
 
     fun showItemList() {
         var itemIndex = 0
         for ((name, item) in contentList) println("${itemIndex++}. ${name}")
     }
-
-
-    abstract fun addContentItem()
 
     fun scanNewItemName(): String {
         println("Введите название")
@@ -41,12 +35,14 @@ abstract class ConsoleScreen<T: ContentItem> () {
     }
 
     fun run() {
-        println("Введите номер пункта меню")
+
         while (true) {
+            showItemList()
+            println("Введите номер пункта меню")
+
             val command = Scanner(System.`in`).nextLine()
             if (command.isEmpty()) {
                 println("Вы ввели пустую строку, введите число")
-
             } else {
                 var intReady = true
                 for (ch in command) {
@@ -71,6 +67,4 @@ abstract class ConsoleScreen<T: ContentItem> () {
     }
 }
 
-fun interface ContentItem {
-    fun open()
-}
+

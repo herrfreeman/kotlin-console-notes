@@ -1,6 +1,7 @@
 import java.util.Scanner
 
-class Note(var name: String?, var parent: Archive?) : ContentItem {
+//Заметка
+class Note(var name: String, var parent: Archive) : ContentItem {
     var content: String = ""
 
     init {
@@ -13,12 +14,10 @@ class Note(var name: String?, var parent: Archive?) : ContentItem {
     }
 
     override fun open() {
-        //println(name) //почему коиптлятор не ругается на проверку null?
-        //println(content)
         println("Заметка \"${name}\":\n${content}")
         println("Введите строку для добавления к заметке, пустую строку для возврата к списку заметок")
         addContent()
-        parent?.open()
+        parent.open()
     }
 
     private fun addContent() {
