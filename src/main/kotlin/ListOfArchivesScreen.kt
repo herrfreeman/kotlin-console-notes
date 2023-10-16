@@ -1,9 +1,9 @@
 //Список архивов
-class ListOfArchivesScreen() : ContentItem, ConsoleScreen<Archive>() {
+class ListOfArchivesScreen() : ContentItem, ConsoleScreen() {
 
     init {
-        contentList.add(("Добавить архив" to ContentItem { addContentItem() }) as Pair<String, Archive>)
-        contentList.add(("Выход" to ContentItem { }) as Pair<String, Archive>)
+        contentList.add(("Добавить архив" to ContentItem { addContentItem() }))
+        contentList.add(("Выход" to ContentItem { }))
     }
 
     override fun open() {

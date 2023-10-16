@@ -5,9 +5,10 @@ fun interface ContentItem {
 }
 
 //Реализует хранение, вывод меню, выбор пункта меню, ввод непустого названия
-abstract class ConsoleScreen<T: ContentItem> () {
+abstract class ConsoleScreen() {
 
-    val contentList: MutableList<Pair<String,T>> = mutableListOf()
+    //val contentList: MutableList<Pair<String,T>> = mutableListOf()
+    val contentList: MutableList<Pair<String,ContentItem>> = mutableListOf()
     /*
     Для хранения использовал пары - Наименование пункта, пункт меню
     Пары выглядят не особо красиво, но:
@@ -15,11 +16,12 @@ abstract class ConsoleScreen<T: ContentItem> () {
     если сделать только интерфейс, то негде сохранить название
     */
 
+
     abstract fun addContentItem()
 
     fun showItemList() {
         var itemIndex = 0
-        for ((name, item) in contentList) println("${itemIndex++}. ${name}")
+        for ((name, ) in contentList) println("${itemIndex++}. ${name}")
     }
 
     fun scanNewItemName(): String {

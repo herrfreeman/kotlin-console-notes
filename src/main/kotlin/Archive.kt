@@ -1,9 +1,9 @@
 //Архив (список заметок)
-class Archive(var parent: ListOfArchivesScreen) : ContentItem, ConsoleScreen<Note>() {
+class Archive(var parent: ListOfArchivesScreen) : ContentItem, ConsoleScreen() {
 
     init {
-        contentList.add(("Добавить заметку" to ContentItem { addContentItem() }) as Pair<String, Note>)
-        contentList.add(("Выход" to ContentItem { parent.open()}) as Pair<String, Note>)
+        contentList.add(("Добавить заметку" to ContentItem { addContentItem() }))
+        contentList.add(("Выход" to ContentItem { parent.open()}))
     }
 
     override fun open() {
