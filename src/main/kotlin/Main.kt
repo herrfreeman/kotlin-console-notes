@@ -1,3 +1,8 @@
+
+
 fun main(args: Array<String>) {
-    println("Hello World!")
+
+    val firstScreen = ListOfArchivesScreen();
+    firstScreen.open()
+
 }
